@@ -5,37 +5,34 @@
   
   <title>Mac上MySQL报错：ERROR 2002 (HY000): Can&#39;t connect to local MySQL server through socket &#39;/tmp/mysql.sock&#39; | Blogs</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="为什么在Mac上装一个MySQL这么的难？据说用HomeBrew容易装，可我发现还是要一堆配置，配置过后还是没成功。我尝试过两种安装方式：
+  <meta name="description" content="安装步骤：
 
+执行：
+1brew install mysql
 
-HomeBrew
-12export ARCHFLAGS=&amp;quot;-arch i686 -arch x86_64&amp;quot;brew install mysql
-
-用brew安装好后，还需要按照这个命令输出的信息进行配置：
-1brew info my">
+在 /usr/local/etc/ 下创建或修改 my.cnf，示例：
+12345678910111213141516port = 3306socket = /tmp/mysql.sockdefault-character-set = utf8[mysqld]collation-server = utf8_unicode_cicha">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Mac上MySQL报错：ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/tmp/mysql.sock'">
 <meta property="og:url" content="http://yoursite.com/2016/03/15/mac-mysql-error-2002/index.html">
 <meta property="og:site_name" content="Blogs">
-<meta property="og:description" content="为什么在Mac上装一个MySQL这么的难？据说用HomeBrew容易装，可我发现还是要一堆配置，配置过后还是没成功。我尝试过两种安装方式：
+<meta property="og:description" content="安装步骤：
 
+执行：
+1brew install mysql
 
-HomeBrew
-12export ARCHFLAGS=&amp;quot;-arch i686 -arch x86_64&amp;quot;brew install mysql
-
-用brew安装好后，还需要按照这个命令输出的信息进行配置：
-1brew info my">
-<meta property="og:updated_time" content="2016-03-15T08:04:29.000Z">
+在 /usr/local/etc/ 下创建或修改 my.cnf，示例：
+12345678910111213141516port = 3306socket = /tmp/mysql.sockdefault-character-set = utf8[mysqld]collation-server = utf8_unicode_cicha">
+<meta property="og:updated_time" content="2016-03-15T08:05:51.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mac上MySQL报错：ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/tmp/mysql.sock'">
-<meta name="twitter:description" content="为什么在Mac上装一个MySQL这么的难？据说用HomeBrew容易装，可我发现还是要一堆配置，配置过后还是没成功。我尝试过两种安装方式：
+<meta name="twitter:description" content="安装步骤：
 
+执行：
+1brew install mysql
 
-HomeBrew
-12export ARCHFLAGS=&amp;quot;-arch i686 -arch x86_64&amp;quot;brew install mysql
-
-用brew安装好后，还需要按照这个命令输出的信息进行配置：
-1brew info my">
+在 /usr/local/etc/ 下创建或修改 my.cnf，示例：
+12345678910111213141516port = 3306socket = /tmp/mysql.sockdefault-character-set = utf8[mysqld]collation-server = utf8_unicode_cicha">
   
     <link rel="alternate" href="/atom.xml" title="Blogs" type="application/atom+xml">
   
@@ -73,9 +70,9 @@ HomeBrew
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -106,23 +103,8 @@ HomeBrew
     
     <div class="article-entry" itemprop="articleBody">
       
-        <blockquote>
-<p> 为什么在Mac上装一个MySQL这么的难？据说用HomeBrew容易装，可我发现还是要一堆配置，配置过后还是没成功。我尝试过两种安装方式：</p>
-</blockquote>
-<ul>
-<li><p>HomeBrew</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export ARCHFLAGS=&quot;-arch i686 -arch x86_64&quot;</span><br><span class="line">brew install mysql</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>用brew安装好后，还需要按照这个命令输出的信息进行配置：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew info mysql</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>用这种方式安装好后，MySQL没法启动。出现如下错误：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql -uroot -p</span><br><span class="line">ERROR 2002 (HY000): Can&apos;t connect to local MySQL server through socket &apos;/tmp/mysql.sock&apos;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>从MySQL官网下载64位的.dmg文件进行安装<br>  用这种方式安装成功后，mysql.server start启动成功。但是，还是出现跟上面一样的错误。<br>只有通过这种方式才能正常打开MySQL：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -uroot -h127.0.0.1 -p</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>正确的安装步骤：</p>
+        <ul>
+<li><p>安装步骤：</p>
 <ul>
 <li><p>执行：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install mysql</span><br></pre></td></tr></table></figure>
@@ -143,7 +125,7 @@ HomeBrew
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/03/15/mac-mysql-error-2002/" data-id="cilt4v5pp000063fyipgu4xka" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2016/03/15/mac-mysql-error-2002/" data-id="cilt4wv5g00038kfyo0yb4l7x" class="article-share-link">Share</a>
       
       
     </footer>
@@ -154,7 +136,7 @@ HomeBrew
   
   
     <a href="/2016/03/11/Yii-SQL-Debug/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Ancien</strong>
+      <strong class="article-nav-caption">Older</strong>
       <div class="article-nav-title">Yii 调试SQL</div>
     </a>
   
@@ -187,7 +169,7 @@ HomeBrew
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Articles récents</h3>
+    <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
         
@@ -220,7 +202,7 @@ HomeBrew
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2016 rampage<br>
-      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
